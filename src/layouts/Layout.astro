@@ -1,23 +1,130 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+---
+import '../styles/global.css'
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalPath?: string;    // e.g. '/about' — leave blank for homepage
+  ogImage?: string;          // override default og image path
+}
+
+const SITE_URL = 'https://mpelectrical.gy';
+
+const {
+  title = 'Electrician Georgetown Guyana | MP Electrical & AC Contractors',
+  description = 'MP Electrical & Air Conditioning — licensed electricians and AC contractors in Georgetown, Guyana. Residential, commercial & emergency services. Free quotes. Call 592 652-2032.',
+  canonicalPath = '',
+  ogImage = '/og-image.svg',
+} = Astro.props;
+
+const canonicalURL = `${SITE_URL}${canonicalPath}`;
+const ogImageURL   = `${SITE_URL}${ogImage}`;
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": ["ElectricalContractor", "HVACBusiness"],
+  "name": "MP Electrical & Air Conditioning Contractors & Supplies",
+  "description": "Licensed electrical and air conditioning contractors in Georgetown, Guyana. Residential, commercial, and 24/7 emergency services.",
+  "url": SITE_URL,
+  "telephone": "+5926522032",
+  "email": "mpelectrical2003@gmail.com",
+  "image": ogImageURL,
+  "logo": `${SITE_URL}/favicon.svg`,
+  "priceRange": "$$",
+  "currenciesAccepted": "GYD",
+  "paymentAccepted": "Cash, Bank Transfer",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "75 Light Street",
+    "addressLocality": "Georgetown",
+    "addressRegion": "Demerara-Mahaica",
+    "addressCountry": "GY"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 6.8013,
+    "longitude": -58.1551
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "00:00",
+      "closes": "23:59",
+      "description": "24/7 emergency line"
+    }
+  ],
+  "areaServed": [
+    { "@type": "City", "name": "Georgetown", "containedInPlace": { "@type": "Country", "name": "Guyana" } },
+    { "@type": "Country", "name": "Guyana" }
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Electrical & Air Conditioning Services",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Residential Electrical" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Commercial Electrical" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AC Installation" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AC Servicing & Repair" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Switchboard Upgrades" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Emergency Electrical" } }
+    ]
+  }
+};
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Primary Meta -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="keywords" content="electrician Georgetown Guyana, electrical contractor Guyana, AC installation Georgetown, air conditioning repair Guyana, licensed electrician Guyana, emergency electrician Georgetown, switchboard upgrade Guyana, residential electrician Georgetown, commercial electrician Guyana, MP Electrical" />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Geo / Local SEO -->
+    <meta name="geo.region" content="GY-DM" />
+    <meta name="geo.placename" content="Georgetown, Guyana" />
+    <meta name="geo.position" content="6.8013;-58.1551" />
+    <meta name="ICBM" content="6.8013, -58.1551" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="MP Electrical & Air Conditioning" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="MP Electrical & Air Conditioning — Georgetown, Guyana" />
+    <meta property="og:locale" content="en_GY" />
+
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
+    <meta name="twitter:image:alt" content="MP Electrical & Air Conditioning — Georgetown, Guyana" />
+
+    <!-- Theme & Icons -->
+    <meta name="theme-color" content="#060C07" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- LocalBusiness JSON-LD Schema -->
+    <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+  </head>
+  <body class="antialiased">
+    <slot />
+  </body>
+</html>

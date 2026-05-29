@@ -1,0 +1,188 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const values = [
+  {
+    title: 'Absolute Honesty',
+    body: "We quote before we start and we don't change it. No hidden charges, no inflated call-out fees, no surprises on the invoice. What we say is what you pay."
+  },
+  {
+    title: 'Qualified Workmanship',
+    body: "Every job is carried out by licensed electricians. We follow Guyana's wiring standards and we do it right — because sloppy electrical work causes fires."
+  },
+  {
+    title: 'We Actually Show Up',
+    body: "We know Guyana's biggest contractor frustration is being ghosted after a quote. We show up when we say we will, we call when we're on the way, and we finish what we start."
+  },
+  {
+    title: 'Pride in Every Job',
+    body: "Small job or large — you get the same care. We're building our reputation one job at a time, and every single one matters to us."
+  },
+];
+
+const team = [
+  { name: 'MP', role: 'Licensed Master Electrician', bio: 'Our lead electrician holds a full Guyana electrical licence. With hands-on experience across residential and commercial projects, he leads every major job personally.' },
+  { name: 'AC Techs', role: 'Certified AC Specialists', bio: 'Our air conditioning team is trained and certified on all major brands — Daikin, Mitsubishi, Fujitsu, LG. Installation, servicing, and repair handled right.' },
+  { name: 'Site Team', role: 'Skilled Electrical Crew', bio: "Trained locally and committed to quality. Our crew takes pride in leaving every site cleaner than we found it — no mess, no excuses." },
+];
+---
+
+<Layout
+  title="About MP Electrical | Licensed Electricians Georgetown, Guyana"
+  description="Meet Georgetown's trusted electrical and AC team. Licensed, insured, and locally owned. MP Electrical serves homes and businesses across Guyana with a 100% workmanship guarantee."
+  canonicalPath="/about"
+>
+  <Nav />
+
+  <section class="hero-bg pt-40 pb-20 relative overflow-hidden">
+    <div class="glow-orb glow-orb-1" style="opacity:0.5;"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <span class="lime-badge mb-8 inline-flex">
+        <span class="lime-dot"></span>
+        Georgetown, Guyana
+      </span>
+      <h1 class="display-xl max-w-3xl mt-6" style="color:#F0F0E8;">
+        Built to raise<br/>
+        <span style="color:#CBFF5E;">the standard.</span>
+      </h1>
+      <p class="mt-6 text-lg max-w-2xl leading-relaxed" style="color:#7A8C7A;">
+        We are MP Electrical & Air Conditioning — a newly established electrical and AC contractor based at 75 Light Street, Georgetown. We exist because Guyana deserves electricians who are honest, skilled, and actually show up.
+      </p>
+    </div>
+  </section>
+
+  <!-- Story Section -->
+  <section class="py-28" style="background:#060C07;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-20 items-start">
+        <div>
+          <p class="section-label mb-5">Our Story</p>
+          <h2 class="display-lg mb-8" style="color:#F0F0E8;">
+            Guyana is in a<br/>
+            <span style="color:#CBFF5E;">new chapter.</span>
+          </h2>
+        </div>
+        <div class="space-y-6 text-base leading-relaxed" style="color:#7A8C7A;">
+          <p>
+            Guyana is experiencing growth unlike anything in its history. New homes are being built across Georgetown and beyond. Businesses are expanding. The country is on the move — and the demand for quality electrical and AC services has never been higher.
+          </p>
+          <p>
+            We launched MP Electrical because we saw an opportunity: bring professionalism, modern standards, and genuine reliability to an industry that too often lets people down. We are not cutting corners to compete on price. We are earning every customer through quality work and honest dealing.
+          </p>
+          <p>
+            Based at 75 Light Street, Georgetown, we serve residential homeowners, commercial businesses, new construction sites, and everything in between. Every quote is free. Every job carries our workmanship guarantee. And our emergency line runs 24 hours a day.
+          </p>
+          <p>
+            We have everything to prove — and that means every job you give us, we treat like our most important one.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values Section -->
+  <section class="py-28" style="background:#0D1A0F;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <p class="section-label mb-4">What We Stand For</p>
+        <h2 class="display-md" style="color:#F0F0E8;">Four principles.<br/>No exceptions.</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        {values.map((v, i) => (
+          <div class="card-dark rounded-2xl p-8">
+            <div class="text-xs font-mono mb-4" style="color:#CBFF5E;">0{i + 1}</div>
+            <h3 class="text-xl font-semibold mb-4" style="color:#F0F0E8;">{v.title}</h3>
+            <p class="text-base leading-relaxed" style="color:#7A8C7A;">{v.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section class="py-28" style="background:#060C07;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-12 gap-8 mb-16">
+        <div class="lg:col-span-6">
+          <p class="section-label mb-5">Our Team</p>
+          <h2 class="display-lg" style="color:#F0F0E8;">
+            Licensed.<br/>
+            <span style="color:#CBFF5E;">Reliable.</span><br/>
+            Local.
+          </h2>
+        </div>
+        <div class="lg:col-span-6 flex items-end">
+          <p class="text-base leading-relaxed" style="color:#7A8C7A;">
+            Our team is fully licensed and insured. We work hard, we care about the result, and we are proud to be building a business in Guyana that people can genuinely rely on.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        {team.map(member => (
+          <div class="card-dark rounded-2xl p-8">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6" style="background:rgba(203,255,94,0.1); border:1px solid rgba(203,255,94,0.2);">
+              <svg class="w-5 h-5" style="color:#CBFF5E;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+              </svg>
+            </div>
+            <div class="font-bold text-lg mb-1" style="color:#F0F0E8;">{member.name}</div>
+            <div class="text-xs uppercase tracking-widest mb-4" style="color:#CBFF5E;">{member.role}</div>
+            <p class="text-sm leading-relaxed" style="color:#7A8C7A;">{member.bio}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Commitment Stats -->
+  <section class="py-20" style="background:#CBFF5E;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="display-md" style="color:#060C07;">Our promise to you.</h2>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        {[
+          { val: "100%", label: "Workmanship Guaranteed" },
+          { val: "24/7", label: "Emergency Availability" },
+          { val: "Free", label: "Every Quote & Estimate" },
+          { val: "$0",   label: "Hidden Fees, Always" },
+        ].map(s => (
+          <div class="text-center">
+            <div class="display-md font-bold" style="color:#060C07;">{s.val}</div>
+            <div class="text-xs uppercase tracking-widest mt-2" style="color:rgba(6,12,7,0.6);">{s.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-24" style="background:#060C07;">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="section-label mb-4">Ready to Work Together?</p>
+      <h2 class="display-lg mb-6" style="color:#F0F0E8;">
+        Get a free quote<br/>
+        <span style="color:#CBFF5E;">today.</span>
+      </h2>
+      <p class="text-base mb-10 leading-relaxed" style="color:#7A8C7A;">
+        Residential or commercial, big or small — call us on <a href="tel:+5926522032" style="color:#CBFF5E; text-decoration:none;">592 652-2032</a> or submit a quote request online. We respond fast.
+      </p>
+      <div class="flex flex-wrap justify-center gap-3">
+        <a href="/contact" class="btn-lime px-8 py-4 rounded-full text-sm" style="text-decoration:none;">
+          Request a Free Quote
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </a>
+        <a href="tel:+5926522032" class="btn-ghost px-8 py-4 rounded-full text-sm" style="text-decoration:none;">
+          Call 592 652-2032
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

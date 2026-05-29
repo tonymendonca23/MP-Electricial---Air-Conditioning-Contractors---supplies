@@ -1,0 +1,316 @@
+@import "tailwindcss";
+
+/* ─── DESIGN TOKENS ───────────────────────────────────────── */
+@theme {
+  --font-sans: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+
+  /* Brand */
+  --color-lime:        #CBFF5E;
+  --color-lime-dim:    #A3CC3A;
+  --color-lime-ghost:  rgba(203,255,94,0.08);
+  --color-lime-border: rgba(203,255,94,0.2);
+
+  /* Base */
+  --color-bg:          #060C07;
+  --color-surface:     #0D1A0F;
+  --color-surface-2:   #142018;
+  --color-border:      rgba(255,255,255,0.08);
+  --color-border-mid:  rgba(255,255,255,0.14);
+
+  /* Text */
+  --color-text:        #F0F0E8;
+  --color-text-muted:  #7A8C7A;
+  --color-text-dim:    #4A5A4A;
+
+  /* Amber (warm accent) */
+  --color-amber:       #F59E0B;
+}
+
+/* ─── RESET / BASE ────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+html {
+  scroll-behavior: smooth;
+  font-size: 18px;
+}
+body {
+  margin: 0;
+  font-family: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  background: #060C07;
+  color: #F0F0E8;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.65;
+}
+
+[id] { scroll-margin-top: 100px; }
+
+/* ─── HERO BACKGROUND ─────────────────────────────────────── */
+.hero-bg {
+  position: relative;
+  background: #060C07;
+  overflow: hidden;
+}
+.hero-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 70% 20%, rgba(203,255,94,0.09) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 50% at 15% 80%, rgba(203,255,94,0.06) 0%, transparent 50%),
+    radial-gradient(ellipse 30% 30% at 90% 85%, rgba(245,158,11,0.05) 0%, transparent 40%);
+  pointer-events: none;
+  z-index: 0;
+}
+/* Animated circuit grid overlay */
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(203,255,94,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(203,255,94,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Animated glow orb */
+.glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+.glow-orb-1 {
+  width: 500px;
+  height: 500px;
+  top: -100px;
+  right: -100px;
+  background: radial-gradient(circle, rgba(203,255,94,0.12), transparent 70%);
+  animation: orb-drift-1 18s ease-in-out infinite;
+}
+.glow-orb-2 {
+  width: 300px;
+  height: 300px;
+  bottom: 0;
+  left: 10%;
+  background: radial-gradient(circle, rgba(203,255,94,0.07), transparent 70%);
+  animation: orb-drift-2 24s ease-in-out infinite;
+}
+
+@keyframes orb-drift-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(-60px, 40px) scale(1.1); }
+  66%       { transform: translate(40px, -30px) scale(0.9); }
+}
+@keyframes orb-drift-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%       { transform: translate(80px, -60px) scale(1.15); }
+}
+
+/* ─── FLOATING PILL NAV ───────────────────────────────────── */
+.pill-nav {
+  background: rgba(6, 12, 7, 0.6);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(203,255,94,0.12);
+  transition: all 0.3s ease;
+}
+.pill-nav.scrolled {
+  background: rgba(6, 12, 7, 0.92);
+  border-color: rgba(203,255,94,0.2);
+  box-shadow: 0 4px 40px rgba(0,0,0,0.5);
+}
+
+/* ─── TYPOGRAPHY ──────────────────────────────────────────── */
+.display-xl {
+  font-size: clamp(3.5rem, 8vw, 7rem);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+}
+.display-lg {
+  font-size: clamp(2.75rem, 5vw, 5rem);
+  font-weight: 700;
+  line-height: 1.0;
+  letter-spacing: -0.025em;
+}
+.display-md {
+  font-size: clamp(2rem, 3.5vw, 3.25rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.text-lime   { color: #CBFF5E; }
+.text-muted  { color: #7A8C7A; }
+.text-dim    { color: #4A5A4A; }
+.text-base-  { color: #F0F0E8; }
+
+/* ─── BUTTONS ─────────────────────────────────────────────── */
+.btn-lime {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: #CBFF5E;
+  color: #060C07;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16,1,0.3,1);
+}
+.btn-lime:hover {
+  background: #b8f04a;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 30px rgba(203,255,94,0.25);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: #F0F0E8;
+  font-weight: 500;
+  border: 1px solid rgba(255,255,255,0.15);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16,1,0.3,1);
+}
+.btn-ghost:hover {
+  border-color: rgba(203,255,94,0.4);
+  color: #CBFF5E;
+  background: rgba(203,255,94,0.05);
+}
+
+.btn-outline-lime {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: #CBFF5E;
+  font-weight: 600;
+  border: 1px solid rgba(203,255,94,0.4);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.btn-outline-lime:hover {
+  background: rgba(203,255,94,0.08);
+  border-color: #CBFF5E;
+}
+
+/* ─── CARD COMPONENTS ─────────────────────────────────────── */
+.card-dark {
+  background: #0D1A0F;
+  border: 1px solid rgba(255,255,255,0.07);
+  transition: all 0.3s ease;
+}
+.card-dark:hover {
+  border-color: rgba(203,255,94,0.2);
+  background: #112015;
+  transform: translateY(-3px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(203,255,94,0.05);
+}
+
+.card-bordered {
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: all 0.3s ease;
+}
+.card-bordered:hover {
+  border-color: rgba(203,255,94,0.25);
+}
+
+/* ─── MARQUEE ─────────────────────────────────────────────── */
+.marquee-wrapper { overflow: hidden; }
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 30s linear infinite;
+}
+.marquee-track:hover { animation-play-state: paused; }
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ─── SERVICE ROW ─────────────────────────────────────────── */
+.service-row {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  transition: all 0.25s ease;
+  cursor: default;
+}
+.service-row:last-child { border-bottom: 1px solid rgba(255,255,255,0.06); }
+.service-row:hover {
+  border-top-color: rgba(203,255,94,0.15);
+  background: rgba(203,255,94,0.03);
+}
+.service-row:hover .service-row-num { color: #CBFF5E; }
+
+/* ─── SECTION DIVIDER ─────────────────────────────────────── */
+.section-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #CBFF5E;
+}
+
+/* ─── LIME DOT BADGE ──────────────────────────────────────── */
+.lime-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 100px;
+  background: rgba(203,255,94,0.08);
+  border: 1px solid rgba(203,255,94,0.2);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #CBFF5E;
+}
+.lime-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #CBFF5E;
+  animation: dot-pulse 2s ease-in-out infinite;
+}
+@keyframes dot-pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(203,255,94,0.6); }
+  50%       { opacity: 0.8; box-shadow: 0 0 0 4px rgba(203,255,94,0); }
+}
+
+/* ─── LARGE FOOTER BRAND ──────────────────────────────────── */
+.footer-brand {
+  font-size: clamp(2.5rem, 7vw, 7rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+  color: rgba(255,255,255,0.06);
+  user-select: none;
+}
+
+/* ─── NAV LINK ────────────────────────────────────────────── */
+.nav-item {
+  font-size: 1rem;
+  font-weight: 500;
+  color: rgba(240,240,232,0.7);
+  padding: 0.375rem 0.85rem;
+  border-radius: 100px;
+  transition: all 0.2s ease;
+}
+.nav-item:hover, .nav-item.active {
+  color: #F0F0E8;
+  background: rgba(255,255,255,0.06);
+}
+
+/* ─── COUNTER ─────────────────────────────────────────────── */
+.stat-val {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+}
+
+/* ─── MISC ────────────────────────────────────────────────── */
+::selection { background: #CBFF5E; color: #060C07; }

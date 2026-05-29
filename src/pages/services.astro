@@ -1,0 +1,167 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const categories = [
+  {
+    label: 'Electrical',
+    items: [
+      {
+        num: '01',
+        title: 'Residential Electrical',
+        detail: 'Complete home wiring, power point installations, ceiling fans, outdoor lighting, smoke alarm systems, and switchboard replacements. We handle new builds, renovations, and upgrades for homes across Guyana.',
+        tags: ['New Homes', 'Renovations', 'Upgrades'],
+      },
+      {
+        num: '02',
+        title: 'Commercial Electrical',
+        detail: 'Trusted by offices, retail stores, factories, and industrial facilities. From tenancy fit-outs to large-scale electrical infrastructure — delivered on schedule and within budget.',
+        tags: ['Offices', 'Retail', 'Industrial', 'Fit-Outs'],
+      },
+      {
+        num: '03',
+        title: 'Switchboard Upgrades',
+        detail: 'Outdated switchboards are a serious fire and safety hazard. We upgrade panels, install safety switches and RCDs, replace old ceramic fuses, and bring your switchboard up to current safety standards.',
+        tags: ['Safety Switches', 'RCDs', 'Panel Upgrades'],
+      },
+      {
+        num: '04',
+        title: 'LED Lighting',
+        detail: 'Cut your energy bills by up to 80% with a professional LED upgrade. We design and install modern LED lighting for homes, offices, warehouses, and outdoor areas.',
+        tags: ['Energy Saving', 'Interior', 'Outdoor', 'Commercial'],
+      },
+      {
+        num: '05',
+        title: 'Data & Communications',
+        detail: 'Structured cabling, network points, CCTV pre-wiring, intercom systems, and telephone line installations for residential and commercial properties.',
+        tags: ['Networking', 'CCTV', 'Intercom'],
+      },
+    ],
+  },
+  {
+    label: 'Air Conditioning',
+    items: [
+      {
+        num: '06',
+        title: 'AC Installation',
+        detail: 'Authorised dealer and installer for Daikin, Mitsubishi Electric, and Fujitsu air conditioning systems. We supply and install split systems, cassette units, ducted systems, and multi-head configurations.',
+        tags: ['Daikin', 'Mitsubishi', 'Fujitsu', 'Split System', 'Ducted'],
+      },
+      {
+        num: '07',
+        title: 'AC Servicing & Maintenance',
+        detail: 'Annual maintenance plans to keep your system running efficiently and extend its lifespan. We clean filters, check refrigerant levels, inspect electrical connections, and test all functions.',
+        tags: ['Annual Service', 'Filter Clean', 'Gas Check'],
+      },
+      {
+        num: '08',
+        title: 'AC Repairs & Diagnostics',
+        detail: 'Not cooling properly? Strange noises? We diagnose and repair all major AC brands. Our technicians carry common parts on their vans for same-visit repairs wherever possible.',
+        tags: ['All Brands', 'Same-Visit Repairs'],
+      },
+      {
+        num: '09',
+        title: 'Commercial HVAC',
+        detail: 'Large-format HVAC solutions for commercial buildings, hotels, clinics, and warehouses. We design, supply, install, and maintain commercial AC systems of all sizes.',
+        tags: ['Commercial', 'HVAC Design', 'Maintenance Contracts'],
+      },
+    ],
+  },
+  {
+    label: 'Emergency & Supplies',
+    items: [
+      {
+        num: '10',
+        title: '24/7 Emergency Electrical',
+        detail: "Exposed wires, total power loss, burning smells — don't wait. Our emergency response team is on call around the clock, 365 days a year, across Guyana.",
+        tags: ['24/7', 'Same Day', 'All Guyana'],
+      },
+      {
+        num: '11',
+        title: 'Electrical Supplies',
+        detail: 'Our trade counter stocks a wide range of electrical components, fittings, cable, breakers, and accessories. Available to trade and retail customers. Ask about bulk pricing.',
+        tags: ['Trade Counter', 'Retail', 'Bulk Pricing'],
+      },
+    ],
+  },
+];
+---
+
+<Layout
+  title="Electrical & AC Services Georgetown Guyana | MP Electrical"
+  description="Full electrical and air conditioning services in Georgetown, Guyana. Wiring, switchboard upgrades, AC installation & repair, data cabling, EV charging and more. Get a free quote today."
+  canonicalPath="/services"
+>
+  <Nav />
+
+  <!-- Page Hero -->
+  <section class="hero-bg pt-40 pb-20 relative overflow-hidden">
+    <div class="glow-orb glow-orb-1" style="opacity:0.5;"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="section-label mb-5">Our Services</p>
+      <h1 class="display-xl max-w-3xl" style="color:#F0F0E8;">
+        Everything<br/>
+        <span style="color:#CBFF5E;">electrical.</span>
+      </h1>
+      <p class="mt-6 text-lg max-w-xl leading-relaxed" style="color:#7A8C7A;">
+        From a simple light fitting to a full commercial electrical fit-out — MP Electrical has been Guyana's go-to licensed contractor for over 20 years.
+      </p>
+    </div>
+  </section>
+
+  <!-- Service Categories -->
+  {categories.map(cat => (
+    <section class="py-20" style="background:#060C07;">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center gap-4 mb-12">
+          <span class="section-label">{cat.label}</span>
+          <div class="flex-1 h-px" style="background:rgba(203,255,94,0.15);"></div>
+        </div>
+        <div>
+          {cat.items.map(s => (
+            <div class="service-row py-8 px-2 group">
+              <div class="flex items-start gap-6 sm:gap-10">
+                <span class="service-row-num text-xs font-mono mt-1 shrink-0 transition-colors" style="color:#4A5A4A;">{s.num}</span>
+                <div class="flex-1">
+                  <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+                    <h3 class="text-xl sm:text-2xl font-semibold" style="color:#F0F0E8;">{s.title}</h3>
+                    <div class="flex flex-wrap gap-2 shrink-0">
+                      {s.tags.map(tag => (
+                        <span class="text-xs px-2.5 py-1 rounded-full font-medium" style="background:rgba(203,255,94,0.07); color:#7A8C7A; border:1px solid rgba(203,255,94,0.12);">{tag}</span>
+                      ))}
+                    </div>
+                  </div>
+                  <p class="mt-3 text-sm leading-relaxed max-w-2xl" style="color:#7A8C7A;">{s.detail}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <!-- CTA -->
+  <section class="py-24" style="background:#CBFF5E;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-xs font-bold uppercase tracking-widest mb-4" style="color:rgba(6,12,7,0.5);">Get Started Today</p>
+      <h2 class="display-md mb-8" style="color:#060C07;">Ready to book a job<br/>or get a quote?</h2>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+        <a href="/contact"
+          class="inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-semibold transition-all"
+          style="background:#060C07; color:#CBFF5E; text-decoration:none;">
+          Request a Free Quote
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+        <a href="tel:+5926522032"
+          class="inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-semibold border"
+          style="border-color:rgba(6,12,7,0.25); color:#060C07; text-decoration:none;">
+          Call 592 652-2032
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

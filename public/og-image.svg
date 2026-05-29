@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#060C07"/>
+      <stop offset="100%" style="stop-color:#0D1F0F"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#CBFF5E;stop-opacity:0.15"/>
+      <stop offset="100%" style="stop-color:#CBFF5E;stop-opacity:0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Glow orb top-right -->
+  <circle cx="950" cy="120" r="300" fill="url(#glow)"/>
+
+  <!-- Left accent bar -->
+  <rect x="80" y="160" width="4" height="120" rx="2" fill="#CBFF5E"/>
+
+  <!-- Favicon/logo mark -->
+  <rect x="80" y="60" width="52" height="52" rx="12" fill="#060C07" stroke="#CBFF5E" stroke-width="1.5"/>
+  <path d="M109 66 99 81h7l-2 11 13-15h-8l2-11z" fill="#CBFF5E"/>
+
+  <!-- Company name -->
+  <text x="148" y="96" font-family="'Helvetica Neue', Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="1" fill="#CBFF5E" text-anchor="start">MP ELECTRICAL</text>
+  <text x="148" y="116" font-family="'Helvetica Neue', Arial, sans-serif" font-size="13" font-weight="400" letter-spacing="2" fill="#7A8C7A" text-anchor="start">AIR CONDITIONING CONTRACTORS &amp; SUPPLIES</text>
+
+  <!-- Divider line -->
+  <line x1="80" y1="148" x2="1120" y2="148" stroke="#1A2E1C" stroke-width="1"/>
+
+  <!-- Main headline -->
+  <text x="88" y="240" font-family="'Helvetica Neue', Arial, sans-serif" font-size="62" font-weight="800" fill="#F0F0E8" text-anchor="start">Licensed Electricians</text>
+  <text x="88" y="318" font-family="'Helvetica Neue', Arial, sans-serif" font-size="62" font-weight="800" fill="#F0F0E8" text-anchor="start">&amp; AC Contractors</text>
+
+  <!-- Lime underline accent -->
+  <rect x="88" y="334" width="340" height="5" rx="2.5" fill="#CBFF5E"/>
+
+  <!-- Sub-tagline -->
+  <text x="88" y="396" font-family="'Helvetica Neue', Arial, sans-serif" font-size="26" font-weight="400" fill="#7A8C7A" text-anchor="start">Georgetown, Guyana  ·  24/7 Emergency  ·  Free Quotes</text>
+
+  <!-- Divider -->
+  <line x1="80" y1="440" x2="1120" y2="440" stroke="#1A2E1C" stroke-width="1"/>
+
+  <!-- Pill badges -->
+  <rect x="88" y="468" width="160" height="42" rx="21" fill="#CBFF5E"/>
+  <text x="168" y="494" font-family="'Helvetica Neue', Arial, sans-serif" font-size="15" font-weight="700" fill="#060C07" text-anchor="middle">100% Guaranteed</text>
+
+  <rect x="264" y="468" width="180" height="42" rx="21" fill="none" stroke="#2A3E2C" stroke-width="1.5"/>
+  <text x="354" y="494" font-family="'Helvetica Neue', Arial, sans-serif" font-size="15" font-weight="600" fill="#7A8C7A" text-anchor="middle">GY Licensed &amp; Local</text>
+
+  <rect x="460" y="468" width="160" height="42" rx="21" fill="none" stroke="#2A3E2C" stroke-width="1.5"/>
+  <text x="540" y="494" font-family="'Helvetica Neue', Arial, sans-serif" font-size="15" font-weight="600" fill="#7A8C7A" text-anchor="middle">Fully Insured</text>
+
+  <!-- Phone number right side -->
+  <text x="1120" y="494" font-family="'Helvetica Neue', Arial, sans-serif" font-size="22" font-weight="700" fill="#CBFF5E" text-anchor="end">592 652-2032</text>
+
+  <!-- Bottom domain -->
+  <text x="88" y="580" font-family="'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="400" letter-spacing="1" fill="#3A4E3C" text-anchor="start">mpelectrical.gy</text>
+</svg>
